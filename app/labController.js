@@ -14,9 +14,16 @@ app.controller('labController', [
 
         function getRepos(organization) {
             $scope.model.repos = null;
-            
-            $scope.model.repos = gitHub.getAll({ org: organization });
-         
+            $scope.model.failStatus = null;
+
+            $scope.model.repos = gitHub.getAll({ org: organization }).$promise.then(
+                function(response) {
+                   $scope.model.repos = response;
+                }, function (reason) {
+                   $scope.model.failStatus = true;
+                   console.log($scope.model.failStatus);
+                }
+            );
         }
 
         function loadDetail(name) {

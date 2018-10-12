@@ -19,7 +19,7 @@
         <div>
             <input type="text" name="" id="" class="form-control" ng-model="org">            
             <input type="button" value="Load Repos" class="btn btn-primary" ng-click="getRepos(org)" ng-hide="model.Repos">
-            <div class="alert alert-danger" ng-show="model.Repos.length > 0">Hello</div>
+            <div class="alert alert-danger" ng-show="model.failStatus">No Results...</div>
             <div class="col-md-6">
                     <table class="table table-striped" ng-show="model.repos">
                         <tr>
